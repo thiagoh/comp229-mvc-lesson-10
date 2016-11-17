@@ -14,7 +14,9 @@ namespace comp229_mvc_lesson_10.Models {
 
         public int ArtistId { get; set; }
 
-        [StringLength(120)]
+        [Required]
+        [StringLength(255)]
+        [Display(Name = "Artists Name")]
         public string Name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

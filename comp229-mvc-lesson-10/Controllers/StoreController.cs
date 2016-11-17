@@ -48,15 +48,20 @@ namespace comp229_mvc_lesson_10.Controllers {
         }
 
         // GET: Store/Browse?genre=Disco
-        public ActionResult Browse(string name = "disco") {
+        public ActionResult Browse(string genre = "disco") {
 
-            name = string.IsNullOrEmpty(name) ? "disco" : name;
+            //name = string.IsNullOrEmpty(name) ? "disco" : name;
 
-            var genre = new Genre() {
-                Name = name
-            };
+            //var genre = new Genre() {
+            //    Name = name
+            //};
 
-            return View(genre);
+            //return View(genre);
+            genre = string.IsNullOrEmpty(genre) ? "disco" : genre;
+
+            var genreObject = db.Genres.Include("Albums").Single<Genre>(g => g.Name == genre);
+
+            return View(genreObject);
         }
     }
 }

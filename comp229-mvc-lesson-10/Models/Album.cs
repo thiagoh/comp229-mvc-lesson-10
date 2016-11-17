@@ -8,6 +8,9 @@ namespace comp229_mvc_lesson_10.Models {
     [Table("Album")]
     public partial class Album {
 
+        public Album() {
+        }
+
         public Album(string title) {
             this.Title = title;
         }
@@ -15,21 +18,22 @@ namespace comp229_mvc_lesson_10.Models {
         public int AlbumId { get; set; }
 
         public int GenreId { get; set; }
+        public virtual Genre Genre { get; set; }
 
         public int ArtistId { get; set; }
+        public virtual Artist Artist { get; set; }
 
         [Required]
         [StringLength(160)]
-        public string Title { get; set; }
+        [Display(Name = "Album Title")]
+        public string Title { get; set; }Albums
 
         [Column(TypeName = "numeric")]
         public decimal Price { get; set; }
 
         [StringLength(1024)]
+        [Display(Name = "Album Art URL")]
+        [ScaffoldColumn(false)]
         public string AlbumArtUrl { get; set; }
-
-        public virtual Artist Artist { get; set; }
-
-        public virtual Genre Genre { get; set; }
     }
 }
