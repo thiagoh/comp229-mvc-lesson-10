@@ -1,0 +1,21 @@
+﻿@using comp229_mvc_lesson_10.Models
+@model IEnumerable<Genre>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div id="promotion"></div>
+
+<h3>Browse Genres</h3>
+
+<p>
+    Select from @Model.Count() genres:
+</p>
+
+<ul>
+    @foreach (Genre item in Model) {
+        <li>@Html.ActionLink(item.Name, "Browse", new { genre = item.Name})</li>
+    }
+</ul>
+
